@@ -2,6 +2,11 @@ import requests
 import os
 
 import pandas as pd
+import sys
+
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
+import keyStore
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 from openpyxl import load_workbook
@@ -21,7 +26,7 @@ road_type = 'ROAD'
 road_type2 = 'PARCEL'
 address = '&address='
 keys = '&key='
-primary_key = 'B441B44D-388E-3ED9-A964-68844EAF7946'
+primary_key = keyStore.main27_primary_key
 
 def request_geo(road):
     page = requests.get(url+params+road_type+address+road+keys+primary_key)
